@@ -87,7 +87,8 @@ try{
 }
 const UpdateConfirmFinnish  = async (req,res) => {
     try{
-        await Book.confirmfinish(req.id);
+        // await Book.confirmfinish(req.id);
+        await Book.delete(id);
         res.status(200).send({message: "Confirm Finish Wash"})
     }catch(error){
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
