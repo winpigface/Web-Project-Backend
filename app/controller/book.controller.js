@@ -51,7 +51,7 @@ const showallBookingAdmin = async (req,res) => {
 const addBooking = async (req,res) => {
 try{
    
-    const {washing_machine_id,book_from,option} = req.body
+    const {email,washing_machine_id,book_from,option} = req.body
         const book_obj = {washing_machine_id,
             book_from,
             user_id: req.id,
@@ -69,7 +69,7 @@ try{
     await Book.add(book_obj)
 
 
-    await book_time.emit('checkconfirmwash',req.id,req.session.email,moment(book_from,"HH:mm"),moment(book_obj.book_to,"HH:mm"),moment(book_obj.book_deadline,"HH:mm"))
+    await book_time.emit('checkconfirmwash',req.id,{email},moment(book_from,"HH:mm"),moment(book_obj.book_to,"HH:mm"),moment(book_obj.book_deadline,"HH:mm"))
     res.status(200).send({message: "book success",data: book_obj})
 }catch(error){
     console.log(error);
