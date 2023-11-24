@@ -2,9 +2,7 @@ const bcrypt = require('bcryptjs');
 const yup = require('yup')
 const jwt = require("jsonwebtoken");
 const expireTime = "1h"; 
-const nodemailer = require('nodemailer')
 require('dotenv').config()
-const Users = require("../model/user.model");
 const User = require('../model/user.model');
 
 
@@ -51,10 +49,10 @@ const login = async (req,res) => {
     if(checkpassword){
       const token = jwt.sign({id: login[0].id,role: login[0].role,fine: login[0].fine},process.env.Usertoken,{expiresIn: expireTime}) 
       req.session.email = email;
-      res.cookie("user_sid",token,{
-        httpOnly:true,
-        maxAge: 20*60*1000
-        }) 
+      // res.cookie("user_sid",token,{
+      //   httpOnly:true,
+      //   maxAge: 20*60*1000
+      //   }) 
        res.status(200).send({...login[0],accessToken: token})
     }
     else throw new Error('password is not correct')

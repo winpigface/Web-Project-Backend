@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const verifyToken = (req,res,next)=>{
-    // const token =req.headers["x-access-token"];
-    const token = req.cookies.user_sid
+    const token =req.headers["x-access-token"];
+    // const token = req.cookies.user_sid
     if(!token){
         return res.status(403).send({message: "You have to login first"});
     }
@@ -16,8 +16,8 @@ const verifyToken = (req,res,next)=>{
     });
 };
 const verifytokenAdmin = (req,res,next)=>{
-    // const token =req.headers["x-access-token"];
-    const token = req.cookies.user_sid
+    const token =req.headers["x-access-token"];
+    // const token = req.cookies.user_sid
 
     if(!token){
         return res.status(403).send({message: "You have to login first"})
