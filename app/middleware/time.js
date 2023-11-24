@@ -50,7 +50,7 @@ const CheckConfirmFinish = schedule.scheduleJob(cron,async ()=>{
    const User_book =  await Book.checkConfirmFinish(id)
    if(User_book[0]){
 
-      await Book.delete(id);
+      // await Book.delete(id);  
       CheckConfirmFinish.cancel();
    }
    else{

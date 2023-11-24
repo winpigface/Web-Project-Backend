@@ -16,7 +16,6 @@ sendmail.on("sendmail",(email,book_sendmail)=>{
   const minute = book_sendmail.minute();
   const SendMailCron = `${minute} ${hour} * * *`;
   const sendmail = schedule.scheduleJob(SendMailCron,()=>{
-    console.log("User email: " + email);
     let mail = {
         from:  process.env.Mail,
         to:  email,
