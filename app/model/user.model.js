@@ -1,5 +1,4 @@
 
-const { reject } = require('lodash')
 const sql = require('./db')
 
 require('dotenv').config()
