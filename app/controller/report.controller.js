@@ -1,9 +1,7 @@
 const Report = require('../model/report.model')
-const yup = require('yup')
 
-const schema = yup.object().shape({
-  report_log: yup.string().required()
-});
+
+
 const showallReport = async (req,res) =>{
   try {
     const showall = await Report.query() 
@@ -16,11 +14,6 @@ const showallReport = async (req,res) =>{
 const addReport = async (req,res) => {
 
       const {user,washing_machine,report_log} = req.body
-      await schema
-      .validate({report_log},{abortEarly:false})
-      .catch((e)=>{
-        res.status(400).send({message: e.message})
-      })
       await Report.add({user,washing_machine,report_log})
       .then((data)=>{
         res.status(200).send(data)

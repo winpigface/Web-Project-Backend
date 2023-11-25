@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-const yup = require('yup')
 const jwt = require("jsonwebtoken");
 const expireTime = "1h"; 
 require('dotenv').config()
@@ -9,12 +8,7 @@ const User = require('../model/user.model');
 
 
 
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  username: yup.string().required(),
-  password:  yup.string().min(6).max(100).required(),
-  phone: yup.string().required()  
-});
+
 
 //////////////
 const signup = async (req,res)=>{
@@ -26,9 +20,7 @@ const signup = async (req,res)=>{
     password: bcrypt.hashSync(password,salt),
     phone
   }
-  await schema.validate(newuser,{abortEarly: false}).catch((e)=>{
-    res.status(400).send({message: e.message})
-  } )
+
 
   await User.add(newuser)
   .then((newuser)=>{
@@ -48,11 +40,6 @@ const login = async (req,res) => {
     const checkpassword =  bcrypt.compareSync(password,login[0].password)
     if(checkpassword){
       const token = jwt.sign({id: login[0].id,role: login[0].role,fine: login[0].fine},process.env.Usertoken,{expiresIn: expireTime}) 
-      // req.session.email = email;
-      // res.cookie("user_sid",token,{
-      //   httpOnly:true,
-      //   maxAge: 20*60*1000
-      //   }) 
        res.status(200).send({...login[0],accessToken: token})
     }
     else throw new Error('password is not correct')
@@ -97,10 +84,6 @@ const showalluserAdmin = async (req,res) =>{
 const updateuserAdmin = async (req,res) =>{
   const {email,username,phone,role,fine} = req.body
 
-  // await schema.validate({username,phone},{abortEarly: false})
-  // .catch((e)=>{
-  //   res.status(400).send({message: e.message})
-  // })
   await User.update(req.params.id,{email,username,phone,role,fine})
   .then((data)=>{
     console.log(data);
