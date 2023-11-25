@@ -95,13 +95,13 @@ const showalluserAdmin = async (req,res) =>{
 
 
 const updateuserAdmin = async (req,res) =>{
-  const {id,email,username,phone,role,fine} = req.body
+  const {email,username,phone,role,fine} = req.body
 
   // await schema.validate({username,phone},{abortEarly: false})
   // .catch((e)=>{
   //   res.status(400).send({message: e.message})
   // })
-  await User.update({id},{email,username,phone,role,fine})
+  await User.update(req.params.id,{email,username,phone,role,fine})
   .then((data)=>{
     console.log(data);
     res.status(200).send({email,username,phone,role,fine})
