@@ -4,7 +4,7 @@ const Report = require('../model/report.model')
 
 const showallReport = async (req,res) =>{
   try {
-    const showall = await Report.query() 
+    const showall = await Report.showallAdmin()
     res.status(200).send(showall)
   } catch (e) {
     res.status(500).send({message: e.message})
