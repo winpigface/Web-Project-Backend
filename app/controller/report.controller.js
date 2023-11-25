@@ -7,7 +7,7 @@ const showallReport = async (req,res) =>{
     const showall = await Report.query() 
     res.status(200).send(showall)
   } catch (e) {
-    res.status(500).send({message: e})
+    res.status(500).send({message: e.message})
   }
   
 }
