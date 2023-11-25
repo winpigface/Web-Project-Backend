@@ -48,7 +48,7 @@ const login = async (req,res) => {
     const checkpassword =  bcrypt.compareSync(password,login[0].password)
     if(checkpassword){
       const token = jwt.sign({id: login[0].id,role: login[0].role,fine: login[0].fine},process.env.Usertoken,{expiresIn: expireTime}) 
-      req.session.email = email;
+      // req.session.email = email;
       // res.cookie("user_sid",token,{
       //   httpOnly:true,
       //   maxAge: 20*60*1000
