@@ -18,7 +18,9 @@ Report.add = (Newreport) =>{
 } 
 Report.showallAdmin = () =>{
     return new Promise((resolve,reject)=>{
-        sql.query('SELECT * FROM report',(err,data)=>{
+        sql.query(`SELECT r.report_date,w.name,u.username,u.phone,r.report_log FROM report r
+                    INNER JOIN wasing_machine w ON r.washing_machine_id = w.id
+                    INNER JOIN users u ON r.user_id = u.id`,(err,data)=>{
         if(err) return reject(err)
         else return resolve(data)
         })
