@@ -11,7 +11,7 @@ module.exports = (app) => {
     //Admin with users
     // router.get("/logout",user.Logout)
     router.get("/",authjwt.verifytokenAdmin,user.showalluserAdmin);
-    router.put("/:id",authjwt.verifytokenAdmin,user.updateuserAdmin);
+    router.put("/",authjwt.verifytokenAdmin,user.updateuserAdmin);
     router.delete("/:id",authjwt.verifytokenAdmin,user.deleteuserAdmin);
     //Admin with washing machine
     router.get("/wash",authjwt.verifytokenAdmin,washing_machine.getAllwashing_machine);
