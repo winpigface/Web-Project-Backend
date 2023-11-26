@@ -5,15 +5,15 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-app.use(session({
-    secret: 'HWEWEW',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { 
-        secure: false,
-        httpOnly: true,
-        maxAge: 1*60*(60*1000) }
-  }))
+// app.use(session({
+//     secret: 'HWEWEW',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { 
+//         secure: false,
+//         httpOnly: true,
+//         maxAge: 1*60*(60*1000) }
+//   }))
 
 require('dotenv').config()
 global.__basedir = __dirname;
