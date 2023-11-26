@@ -13,7 +13,7 @@ module.exports= (app)=>{
     router.post("/signup",user.signup);
     router.post("/login",user.login);
     // router.get("/logout",user.Logout)
-    router.put("/dashboard/user",authjwt.verifyToken,user.updateuser)
+    router.put("/dashboard/:id",authjwt.verifyToken,user.updateuser)
     // router.delete("/dashboard/user",authjwt.verifyToken,user.)
 
     //user with booking     
