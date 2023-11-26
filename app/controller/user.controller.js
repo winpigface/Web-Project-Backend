@@ -20,8 +20,6 @@ const signup = async (req,res)=>{
     password: bcrypt.hashSync(password,salt),
     phone
   }
-
-
   await User.add(newuser)
   .then((newuser)=>{
     res.status(200).send({message: "Signup complete",newuser: newuser})

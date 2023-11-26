@@ -21,7 +21,6 @@ function bookDeadline(bookto){
 const showbooking_wash = async (req,res) => {
   await Book.showdashboard()
     .then((data)=>{
- 
         res.status(200).send(data)
     })
     .catch((error)=>{
@@ -52,7 +51,7 @@ const showMyself = async (req,res)=>{
     .then((data)=>{
         res.status(200).send(data)
        }) 
-       .catch((error)=>{
+    .catch((error)=>{
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     })
 }
