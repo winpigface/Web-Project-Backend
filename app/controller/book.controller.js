@@ -47,6 +47,15 @@ const showallBookingAdmin = async (req,res) => {
     return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
    })
 }
+const showMyself = async (req,res)=>{
+    await Book.showMyself(req.id)
+    .then((data)=>{
+        res.status(200).send(data)
+       }) 
+       .catch((error)=>{
+        return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
+    })
+}
 
 const addBooking = async (req,res) => {
 try{
@@ -111,4 +120,4 @@ const DeleteMyown = async (req,res) =>{
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     }
 }
-module.exports = {showbooking_wash,showbooking_eachwash,addBooking,UpdateConfirmWash,UpdateConfirmFinnish,showallBookingAdmin,Delete,DeleteMyown}
+module.exports = {showbooking_wash,showbooking_eachwash,showMyself,addBooking,UpdateConfirmWash,UpdateConfirmFinnish,showallBookingAdmin,Delete,DeleteMyown}
