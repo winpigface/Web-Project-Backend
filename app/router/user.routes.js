@@ -8,21 +8,18 @@ module.exports= (app)=>{
     var user = require("../controller/user.controller")
     var book = require('../controller/book.controller')
     var report = require('../controller/report.controller')
-
+    var wash = require('../controller/washing_machine.controller')
     var router = require('express').Router();
     router.post("/signup",user.signup);
     router.post("/login",user.login);
     // router.get("/logout",user.Logout)
     router.put("/dashboard/profile/:id",authjwt.verifyToken,user.updateuser)
     // router.delete("/dashboard/user",authjwt.verifyToken,user.)
-
+    router.get("/dashboard/allwash",authjwt.verifyToken,wash.Dashboard)
     //user with booking     
-    console.log("showbooking_wash");
     router.get("/dashboard",authjwt.verifyToken,book.showbooking_wash);
-    console.log("showbooking_eachwash");
-
+    
     router.get("/dashboard/:washid",authjwt.verifyToken,validfine,book.showbooking_eachwash)
-    console.log("showMyself");
 
     router.get("/dashboard/mywash",authjwt.verifyToken,validfine,book.showMyself)
     router.post("/dashboard",authjwt.verifyToken,validfine,book.addBooking)

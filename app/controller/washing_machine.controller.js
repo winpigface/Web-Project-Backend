@@ -29,7 +29,15 @@ const getAllwashing_machine = async (req,res) =>{
       return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     })
 }
-
+const Dashboard = async ()=>{
+  await Washing_Machine.Dashboard()
+  .then((all_wash) => {
+      res.status(200).send(all_wash)
+  })
+  .catch((error)=>{
+    return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
+  })
+}
 
 const update = async (req,res) => {
      const {name,status} = req.body
@@ -58,4 +66,4 @@ const Delete = async (req,res) => {
 }
 
 
-module.exports = {New_washing_machine,Delete,update,getAllwashing_machine}
+module.exports = {New_washing_machine,Delete,update,getAllwashing_machine,Dashboard}

@@ -44,14 +44,7 @@ User.HaveFine = (id) => {
         })
     })
 }
-// User.UnlockFine = () => {
-//     return new Promise((resolved,reject)=>{
-//         sql.query('UPDATE users SET fine = 0 WHERE = ?',[id],(err,data)=>{
-//             if(err) return reject(err)
-//             else return resolved(data)
-//         })
-//     })
-// }
+
 User.showallAdmin = ()=>{
     return new Promise((resolved,reject)=>{
         sql.query('SELECT id,username,email,phone,role,fine FROM users',(err,data)=>{
