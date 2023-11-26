@@ -42,9 +42,9 @@ Washing_Machine.deleteWash = (id) => {
 } 
 Washing_Machine.Dashboard = () =>{
     return new Promise((resolved,reject)=>{
-        sql.query(`SELECT DISTINCT w.id,w.name,w.Status,b.Status,u.username FROM washing_machine w
-                    LEFT OUTER JOIN booking b ON w.id = b.washing_machine_id
-                    INNER JOIN users u ON u.id = b.user_id `,(err,data)=>{
+        sql.query(`SELECT DISTINCT w.id,w.name,w.Status,u.username,b.Status FROM washing_machine w
+                    LEFT  JOIN booking b ON w.id = b.washing_machine_id
+                    LEFT JOIN users u ON u.id = b.user_id  `,(err,data)=>{
             if(err) return reject(err)
             else return resolved(data)
         })
