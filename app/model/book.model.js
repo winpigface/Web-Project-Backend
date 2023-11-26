@@ -61,8 +61,8 @@ Book.showbookeachwash = (washid)=>{
     FROM booking b  
     INNER JOIN washing_machine w ON b.washing_machine_id = ?
     INNER JOIN users u ON b.user_id = u.id 
-    WHERE b.Status != 'finish'
-    ORDER BY washing_machine_id ASC,book_from ASC`,[washid],
+    WHERE b.Status != 'finish' AND b.washing_machine_id = ?
+    ORDER BY washing_machine_id ASC,book_from ASC`,[washid,washid],
     (err,data)=>{
       if(err) return reject(err)
       else return resolve(data)
