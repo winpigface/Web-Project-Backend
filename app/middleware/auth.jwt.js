@@ -17,7 +17,7 @@ const verifyToken = (req,res,next)=>{
 const verifytokenAdmin = (req,res,next)=>{
     const token =req.headers["x-access-token"];
     if(!token){
-        return res.status(403).send({message: "You have to login first"})
+        return res.status(401).send({message: "You have to login first"})
     }
     jwt.verify(token,process.env.Usertoken,(err,decoded)=>{
         if(err) return res.status(401).send({message: "Unauthorized"});
