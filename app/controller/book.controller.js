@@ -103,4 +103,12 @@ const Delete =  async (req,res) => {
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     }
 }
-module.exports = {showbooking_wash,showbooking_eachwash,addBooking,UpdateConfirmWash,UpdateConfirmFinnish,showallBookingAdmin,Delete}
+const DeleteMyown = async (req,res) =>{
+    try{
+        await Book.delete(req.params.id);
+        res.status(200).send({message: "Delete Success"})
+    }catch(error){
+        return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
+    }
+}
+module.exports = {showbooking_wash,showbooking_eachwash,addBooking,UpdateConfirmWash,UpdateConfirmFinnish,showallBookingAdmin,Delete,DeleteMyown}

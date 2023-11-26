@@ -23,6 +23,7 @@ module.exports = (app) => {
     router.delete("/report/:id",authjwt.verifytokenAdmin,report.deleteReport);
     //Admin with booking
     router.get("/booking",authjwt.verifytokenAdmin,book.showallBookingAdmin)
+    router.delete("/booking/:id",authjwt.verifytokenAdmin,book.DeleteMyown)
 
     app.use("/api/admin",router)
 }
