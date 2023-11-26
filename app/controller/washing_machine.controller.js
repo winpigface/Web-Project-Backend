@@ -1,18 +1,11 @@
 const Washing_Machine = require('../model/washing_machine.model')
-const  yup = require('yup')
 
-const schema = yup.object().shape({
-  name: yup.string().required()
-});
+
 
 const New_washing_machine = async (req,res) => {
   try{
   const {name} = req.body
-  await schema
-        .validate({name},{abortEarly: false})
-        .catch((e)=>{
-          res.status(400).send({message: e.message})
-        })
+
   await Washing_Machine.add({name})
   .then((New_washmachine)=>{
     res.status(200).send({message: "Add Complete"})
