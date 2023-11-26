@@ -19,6 +19,7 @@ module.exports= (app)=>{
     //user with booking     
     router.get("/dashboard",authjwt.verifyToken,book.showbooking_wash);
     router.get("/dashboard/:washid",authjwt.verifyToken,validfine,book.showbooking_eachwash)
+    router.get("/dashboard/mywash",authjwt.verifyToken,validfine,book.showMyself)
     router.post("/dashboard",authjwt.verifyToken,validfine,book.addBooking)
     router.put("/dashboard/comfirmwash",authjwt.verifyToken,validfine,book.UpdateConfirmWash)
     router.put("/dashboard/finishwash",authjwt.verifyToken,validfine,book.UpdateConfirmFinnish)

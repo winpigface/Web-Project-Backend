@@ -54,10 +54,6 @@ const updateuser = async (req,res)=>{
 
   const {username,phone} = req.body
 
-  await schema.validate({username,phone},{abortEarly: false})
-  .catch((e)=>{
-    res.status(400).send({message: e.message})
-  })
   await User.update(req.params.id,{username,phone})
   .then((data)=>{
     console.log(data);
