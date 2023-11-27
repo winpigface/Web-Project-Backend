@@ -17,7 +17,6 @@ app.use(cookieParser())
 // //Check
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to my Website." });
-    console.log( moment().format("HH:mm"));
 });
 
 require("./app/router/user.routes")(app)

@@ -1,6 +1,7 @@
 const Book = require('../model/book.model');
 const Washing_Machine = require('../model/washing_machine.model')
 const book_time = require('../middleware/time')
+const sendMail = require('../middleware/sendmail')
 const moment = require('moment');
 require('dotenv').config()
 function selectTime(book_from,options){
@@ -88,6 +89,7 @@ const UpdateConfirmWash = async (req,res) => {
 try{
     await Book.confirmwash(req.params.id);
     await Book.ChangeStatusInuse(req.params.id)
+    await sendMail.emit(req.params.email,moment(req.params.book_to,"HH:mm").subtract(1,'m'))
     res.status(200).send({message: "Confirm Wash"})
 }catch(error){
     return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})

@@ -23,7 +23,7 @@ module.exports= (app)=>{
 
     router.get("/dashboard/mywash/:id",authjwt.verifyToken,validfine,book.showMyself)
     router.post("/dashboard",authjwt.verifyToken,validfine,book.addBooking)
-    router.put("/dashboard/comfirmwash/:id",validfine,book.UpdateConfirmWash)
+    router.put("/dashboard/comfirmwash/:id/:email/:book_from",validfine,book.UpdateConfirmWash)
     router.put("/dashboard/finishwash",authjwt.verifyToken,validfine,book.UpdateConfirmFinnish)
     router.delete("/dashboard",authjwt.verifyToken,validfine,book.Delete)
     // router.delete("/dashboard",authjwt.verifyToken,validfine,book.Delete);
