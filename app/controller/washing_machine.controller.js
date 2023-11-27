@@ -33,7 +33,7 @@ const Dashboard = async (req,res)=>{
   await Washing_Machine.Dashboard()
   .then((all_wash) => {
      const data = _.uniqBy(all_wash,'id')
-      res.status(200).send(all_wash)
+      res.status(200).send(data)
   })
   .catch((error)=>{
     return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
