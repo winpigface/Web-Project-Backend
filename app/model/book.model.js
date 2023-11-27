@@ -138,7 +138,7 @@ Book.delete =  (user_id) => {
 }
 Book.deleteAdmin = (username) => {
   return new Promise((resolve,reject)=>{
-    sql.query(`DELETE FROM booking WHERE username = ?`,[username],(err,data)=>{
+    sql.query(`DELETE FROM booking WHERE  user_id = (SELECT id FROM users WHERE username = ?)`,[username],(err,data)=>{
       if(err) return reject(err)
       else return resolve(data)
     })
