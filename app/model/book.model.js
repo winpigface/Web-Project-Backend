@@ -86,7 +86,7 @@ Book.showallAdmin = ()=>{
 }
 Book.showMyself = (id) =>{
   return new Promise((resolve,reject)=>{
-    sql.query(`SELECT w.name AS washing_machine_name, DATE_FORMAT(b.book_date,'%y-%m-%d') AS book_date,TIME_FORMAT(b.book_from,'%H:%i') AS book_from,TIME_FORMAT(b.book_to,'%H:%i') AS book_to,b.Status  
+    sql.query(`SELECT w.name AS washing_machine_name,TIME_FORMAT(b.book_from,'%H:%i') AS show_from,b.book_from,b.book_to,TIME_FORMAT(b.book_to,'%H:%i') AS show_to,b.Status  
               FROM booking b 
               INNER JOIN washing_machine w ON b.washing_machine_id = w.id 
               INNER JOIN users u ON b.user_id = ? 
