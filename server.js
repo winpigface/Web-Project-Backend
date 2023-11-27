@@ -21,7 +21,7 @@ app.use(cookieParser())
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to my Website." });
 });
-
+console.log("Where");
 require("./app/router/user.routes")(app)
 require("./app/router/admin.routes")(app)
 

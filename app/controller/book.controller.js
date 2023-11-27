@@ -78,7 +78,7 @@ try{
     await Book.add(book_obj)
 
 
-    await book_time.emit('checkconfirmwash',req.id,{email},moment(book_from,"HH:mm"),moment(book_obj.book_to,"HH:mm"),moment(book_obj.book_deadline,"HH:mm"))
+    await book_time.emit('checkconfirmwash',req.id,email,moment(book_from,"HH:mm"),moment(book_obj.book_to,"HH:mm"),moment(book_obj.book_deadline,"HH:mm"))
     res.status(200).send({message: "book success",data: book_obj})
 }catch(error){
     console.log(error);
@@ -89,7 +89,7 @@ const UpdateConfirmWash = async (req,res) => {
 try{
     await Book.confirmwash(req.params.id);
     await Book.ChangeStatusInuse(req.params.id)
-    await sendMail.emit(req.params.email,moment(req.params.book_to,"HH:mm").subtract(1,'m'))
+    // await sendMail.emit("sendmail",req.params.email,moment(req.params.book_to,"HH:mm").subtract(1,'m'))
     res.status(200).send({message: "Confirm Wash"})
 }catch(error){
     return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
