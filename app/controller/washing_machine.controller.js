@@ -1,5 +1,5 @@
 const Washing_Machine = require('../model/washing_machine.model')
-
+const _ = require('lodash')
 
 
 const New_washing_machine = async (req,res) => {
@@ -32,6 +32,7 @@ const getAllwashing_machine = async (req,res) =>{
 const Dashboard = async (req,res)=>{
   await Washing_Machine.Dashboard()
   .then((all_wash) => {
+     const data = _.uniqBy(all_wash,'id')
       res.status(200).send(all_wash)
   })
   .catch((error)=>{
