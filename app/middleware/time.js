@@ -4,8 +4,7 @@ const sendMail = require('./sendmail.js')
 const events = require('events');
 const Book = require('../model/book.model');
 const User = require('../model/user.model.js');
-const EventEmitter = require('eventemitter3');
-const BookingEvent = new EventEmitter();
+const BookingEvent = new events.EventEmitter();
 require('dotenv').config()
   
 BookingEvent.on('checkconfirmwash', async (id,email,book_from,book_to,book_deadline)=>{
