@@ -4,6 +4,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
 const moment = require('moment')
+require('./app/middleware/time')
+require('./app/middleware/sendmail')
+
 require('dotenv').config()
 global.__basedir = __dirname;
 var corsOptions = {
