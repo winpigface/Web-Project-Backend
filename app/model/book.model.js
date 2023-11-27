@@ -106,11 +106,12 @@ Book.checkbooktime = (id,book_from,book_to)=>{
                 AND (? BETWEEN b.book_from AND b.book_to OR ? BETWEEN b.book_from AND b.book_to)
                 LIMIT 1`,[id,book_from,book_to],(err,data)=>{
                   if(err) return reject(err)
-                  if(data[0] || book_from < moment().format("HH:mm")) return reject(new Error("You can't book this time"))
+                  if(data[0]) return reject(new Error("You can't book this time"))
                   else return resolve()
                 })
   })
 }
+// || book_from < moment().format("HH:mm")
 Book.checkuser = (user_id)=>{
   return new Promise((resolve,reject)=>{
     sql.query(`SELECT user_id FROM booking WHERE user_id = ?`,[user_id],(err,data)=>{

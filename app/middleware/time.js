@@ -36,6 +36,7 @@ const minute = moment(book_to,"HH:mm").minute()
 const cron = `${minute} ${hour} * * *`;
 
 const ChangeToFinish = schedule.scheduleJob(cron,async ()=>{
+   console.log("ToFinish");
    await Book.ChangeStatusFinish(id)
    ChangeToFinish.cancel();
 })
