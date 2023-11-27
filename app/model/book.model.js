@@ -136,6 +136,14 @@ Book.delete =  (user_id) => {
     })
   })
 }
+Book.deleteAdmin = (username) => {
+  return new Promise((resolve,reject)=>{
+    sql.query(`DELETE FROM booking WHERE username = ?`,[username],(err,data)=>{
+      if(err) return reject(err)
+      else return resolve(data)
+    })
+  })
+}
 // Check status 
 Book.checkConfirmWash = (user_id) =>{
   return new Promise((resolve,reject)=>{

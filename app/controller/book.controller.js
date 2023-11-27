@@ -111,6 +111,14 @@ const Delete =  async (req,res) => {
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     }
 }
+const DeleteAdmin = async (req,res)=>{
+    try{
+        await Book.deleteAdmin(req.params.username);
+        res.status(200).send({message: "Delete Success"})
+    }catch(error){
+        return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
+    }
+}
 const DeleteMyown = async (req,res) =>{
     try{
         await Book.delete(req.params.id);
@@ -119,4 +127,4 @@ const DeleteMyown = async (req,res) =>{
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     }
 }
-module.exports = {showbooking_wash,showbooking_eachwash,showMyself,addBooking,UpdateConfirmWash,UpdateConfirmFinnish,showallBookingAdmin,Delete,DeleteMyown}
+module.exports = {showbooking_wash,showbooking_eachwash,showMyself,addBooking,UpdateConfirmWash,UpdateConfirmFinnish,showallBookingAdmin,Delete,DeleteMyown,DeleteAdmin}
