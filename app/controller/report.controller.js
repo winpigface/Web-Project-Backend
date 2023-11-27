@@ -13,8 +13,8 @@ const showallReport = async (req,res) =>{
 }
 const addReport = async (req,res) => {
 
-      const {user,washing_machine,report_log} = req.body
-      await Report.add({user,washing_machine,report_log})
+      const {user_id,washing_machine_id,report_log} = req.body
+      await Report.add({user_id,washing_machine_id,report_log})
       .then((data)=>{
         res.status(200).send(data)
       })
