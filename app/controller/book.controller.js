@@ -47,7 +47,7 @@ const showallBookingAdmin = async (req,res) => {
    })
 }
 const showMyself = async (req,res)=>{
-    await Book.showMyself(req.id)
+    await Book.showMyself(req.params.id)
     .then((data)=>{
         res.status(200).send(data)
        }) 
