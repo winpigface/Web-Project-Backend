@@ -86,8 +86,8 @@ try{
 
 const UpdateConfirmWash = async (req,res) => {
 try{
-    await Book.confirmwash(req.id);
-    await Book.ChangeStatusInuse(req.id)
+    await Book.confirmwash(req.params.id);
+    await Book.ChangeStatusInuse(req.params.id)
     res.status(200).send({message: "Confirm Wash"})
 }catch(error){
     return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
