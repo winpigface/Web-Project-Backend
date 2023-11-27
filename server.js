@@ -6,7 +6,7 @@ const app = express();
 require('dotenv').config()
 global.__basedir = __dirname;
 var corsOptions = {
-origin: "http://localhost:8080/",
+origin: "*",
 credentials: true,
 };
 app.use(cors(corsOptions));
