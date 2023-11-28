@@ -50,8 +50,14 @@ const showallBookingAdmin = async (req,res) => {
 const showMyself = async (req,res)=>{
     await Book.showMyself(req.params.id)
     .then((data)=>{
+        res.writeHead(200, {
+            'Content-Type': 'text/event-stream',
+            'Connection': 'keep-alive',
+            'Cache-Control': 'no-cache',
+        });
         res.status(200).send(data)
        }) 
+       
     .catch((error)=>{
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
     })
