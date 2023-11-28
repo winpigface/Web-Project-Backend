@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const expireTime = "1h"; 
+const expireTime = "3h"; 
 require('dotenv').config()
 const User = require('../model/user.model');
 
