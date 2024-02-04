@@ -12,7 +12,7 @@ Report.add = (Newreport) =>{
     return new Promise((resolve,reject)=>{
         sql.query('INSERT INTO report SET ?',Newreport,(err,data)=>{
             if(err) return reject(err)
-            else return resolve(...Newreport)
+            else return resolve(data)
         })
     })
 } 

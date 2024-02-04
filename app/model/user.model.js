@@ -45,6 +45,7 @@ User.HaveFine = (id) => {
     })
 }
 
+// Admin
 User.showallAdmin = ()=>{
     return new Promise((resolved,reject)=>{
         sql.query('SELECT id,username,email,phone,role,fine FROM users',(err,data)=>{

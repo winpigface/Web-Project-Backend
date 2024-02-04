@@ -21,7 +21,7 @@ const addReport = async (req,res) => {
       .catch((error)=>{
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})
       })
-      res.status(200).send(add)
+      res.status(200).send(data)
 
 }
 const deleteReport = async (req,res) => {

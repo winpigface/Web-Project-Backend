@@ -14,6 +14,7 @@ const verifyToken = (req,res,next)=>{
         }else{res.status(401).send({message: "You can't access this session"});}
     });
 };
+
 const verifytokenAdmin = (req,res,next)=>{
     const token =req.headers["x-access-token"];
     if(!token){
@@ -29,6 +30,4 @@ const verifytokenAdmin = (req,res,next)=>{
         
     });
 }
-
-
 module.exports = {verifyToken,verifytokenAdmin};

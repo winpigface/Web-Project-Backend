@@ -8,7 +8,7 @@ const Washing_Machine = function(washing_machine){
 
 Washing_Machine.showall = ()=>{
     return new Promise((resolved,reject)=>{
-        sql.query('SELECT * FROM washing_machine',(err,data)=>{
+        sql.query(' ',(err,data)=>{
             if(err) return reject(err)
             else return resolved(data)
         })

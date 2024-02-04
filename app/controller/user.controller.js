@@ -3,13 +3,6 @@ const jwt = require("jsonwebtoken");
 const expireTime = "3h"; 
 require('dotenv').config()
 const User = require('../model/user.model');
-
-
-
-
-
-
-
 //////////////
 const signup = async (req,res)=>{
 
@@ -37,7 +30,6 @@ const login = async (req,res) => {
     if(login[0]){
     const checkpassword =  bcrypt.compareSync(password,login[0].password)
     if(checkpassword){
-      console.log("HEHE");
       const token = jwt.sign({id: login[0].id,role: login[0].role,fine: login[0].fine},process.env.Usertoken,{expiresIn: expireTime}) 
        res.status(200).send({...login[0],accessToken: token})
     }
