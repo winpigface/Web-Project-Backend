@@ -15,8 +15,8 @@ const addReport = async (req,res) => {
 
       const {user_id,washing_machine_id,report_log} = req.body
       await Report.add({user_id,washing_machine_id,report_log})
-      .then((data)=>{
-        res.status(200).send(data)
+      .then(()=>{
+        res.status(200).send()
       })
       .catch((error)=>{
         return res.status(400).send({error: error.name,sqlstate: error.sqlState,message: error.message})

@@ -8,7 +8,7 @@ const Washing_Machine = function(washing_machine){
 
 Washing_Machine.showall = ()=>{
     return new Promise((resolved,reject)=>{
-        sql.query(' ',(err,data)=>{
+        sql.query('SELECT * FROM washing_machine',(err,data)=>{
             if(err) return reject(err)
             else return resolved(data)
         })
@@ -55,6 +55,7 @@ Washing_Machine.Dashboard = () =>{
 Washing_Machine.checkStatus = (id)=>{
     return new Promise((resolved,reject)=>{
         sql.query(`SELECT Status FROM washing_machine WHERE id = ?`,[id],(err,data)=>{
+            console.log(data)
             if(err) return reject(err)
             if(data[0].Status != 'ON'){
                  return reject(new Error("this washing machine can't use right now"))
