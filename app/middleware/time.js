@@ -6,7 +6,8 @@ const Book = require('../model/book.model');
 const User = require('../model/user.model.js');
 const BookingEvent = new events.EventEmitter();
 require('dotenv').config()
-  
+
+setImmediate(()=>{
 BookingEvent.on('checkconfirmwash', async (id,email,book_from,book_to,book_deadline)=>{
 const hour = moment(book_from,"HH:mm").add({'m':1}).hour()
 const minute = moment(book_from,"HH:mm").add({'m':1}).minute()
@@ -62,6 +63,7 @@ const CheckConfirmFinish = schedule.scheduleJob(cron,async ()=>{
 
 })
    
+})
 })
 
 module.exports = BookingEvent
